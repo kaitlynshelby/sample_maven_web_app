@@ -61,7 +61,7 @@
         $('#get-data').click(function () 
         {
           var userid = document.getElementById("userid");
-          var url='tcss360/users/'+userid.value;
+          var url='tcss360/messages/'+userid.value;
 
           $.ajax({
             type: 'GET',
@@ -93,7 +93,7 @@
            var userid = document.getElementById("userid");
            var username = document.getElementById("name");
            var user = { 'userid': userid.value };           
-           var url='tcss360/users/';
+           var url='tcss360/messages/';
            if (confirm('Are you sure - DELETE ' + username.value + '-(' + userid.value + ') ?')) {
              $.ajax({
                type: 'DELETE',
@@ -127,9 +127,9 @@
                 // Create a new record
                 var username = document.getElementById("name");
                 var age = document.getElementById("age");
-                var user = { 'name': username.value,
-                             'age': age.value };           
-                var url='tcss360/users/';
+                var user = { 'messages': username.value,
+                             'userid': age.value };           
+                var url='tcss360/messages/';
                 if (confirm('Are you sure - CREATE ' + username.value + ' ?')) {
                   $.ajax({
                     type: 'POST',
@@ -148,9 +148,8 @@
                 var username = document.getElementById("name");
                 var age = document.getElementById("age");
                 var user = { 'userid': userid.value,
-                             'name': username.value,
-                             'age': age.value };           
-                var url='tcss360/users/';
+                             'message': username.value };           
+                var url='tcss360/messages/';
                 if (confirm('Are you sure - UPDATE ' + username.value + ' ?')) {
                   $.ajax({
                     type: 'PUT',
@@ -177,7 +176,7 @@
         $(".table-body").on('click', 'tr', function() {
             var clicked_userid=$(this).find('td:first').text();
             old_userid = clicked_userid;
-            var url='tcss360/users/'+clicked_userid;
+            var url='tcss360/messages/'+clicked_userid;
              $.ajax({
                type: 'GET',
                url: url,
@@ -196,7 +195,7 @@
     // gets and displays users by calling render
     function getusers() {
         // Form load
-        var url='tcss360/users/0';
+        var url='tcss360/messages/0';
 
         $.ajax({
           type: 'GET',
@@ -210,7 +209,7 @@
     function getuser() {
         // Form load
         var userid = document.getElementById("userid"); 
-        var url='tcss360/users/' + userid.value;
+        var url='tcss360/messages/' + userid.value;
 
         $.ajax({
           type: 'GET',
@@ -224,8 +223,8 @@
     function render(data)  {
       $.each(data, function(index, user) { 
           var newrow = "<tr><td id=\"userid\"" + index + "\">"+ user.userid + "</td>";
-          newrow += "<td id=\"name\">" + user.name + "</td>";
-          newrow += "<td id=\"age\">" + user.age + "</td></tr>";
+          newrow += "<td id=\"name\">" + user.message + "</td>";
+          newrow += "<td id=\"age\">" + user.dateadded + "</td></tr>";
           $('#mybody').append(newrow);
       });
     }
