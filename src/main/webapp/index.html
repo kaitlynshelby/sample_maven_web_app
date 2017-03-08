@@ -64,7 +64,7 @@
         $('#get-data').click(function () 
         {
           var msgid = document.getElementById("msgid");
-          var url='Messages/'+msgid.value;
+          var url='tcss360/messages/'+msgid.value;
 
           $.ajax({
             type: 'GET',
@@ -96,7 +96,7 @@
           var msgid = document.getElementById("msgid");
            var message = document.getElementById("msg");
            var msg = { 'messageId': msgid.value };           
-           var url='Messages/';
+           var url='tcss360/messages/';
            if (confirm('Are you sure - DELETE ' + message.value + '-(' + msgid.value + ') ?')) {
              $.ajax({
                type: 'DELETE',
@@ -132,7 +132,7 @@
                 var userid = document.getElementById("userid");
                 var msg = { 'message': message.value,
                              'userId': userid.value };           
-                var url='Messages/';
+                var url='tcss360/messages/';
                 if (confirm('Are you sure - CREATE ' + message.value + ' ?')) {
                   $.ajax({
                     type: 'POST',
@@ -153,7 +153,7 @@
                 var message = { 'messageId': msgid.value,
                              'message': msg.value,
                              'userId': userid.value };           
-                var url='Messages/';
+                var url='tcss360/messages/';
                 if (confirm('Are you sure - UPDATE ' + msgid.value + ' ?')) {
                   $.ajax({
                     type: 'PUT',
@@ -180,7 +180,7 @@
         $(".table-body").on('click', 'tr', function() {
             var clicked_msgid=$(this).find('td:first').text();
             old_msgid = clicked_msgid;
-            var url='Messages/'+clicked_msgid;
+            var url='tcss360/messages/'+clicked_msgid;
              $.ajax({
                type: 'GET',
                url: url,
@@ -199,7 +199,7 @@
     // gets and displays users by calling render
     function getmessages() {
         // Form load
-        var url='Messages/0';
+        var url='tcss360/messages/0';
 
         $.ajax({
           type: 'GET',
@@ -213,7 +213,7 @@
     function getmessage() {
         // Form load
         var msgid = document.getElementById("msgid"); 
-        var url='Messages/' + msgid.value;
+        var url='tcss360/messages/' + msgid.value;
 
         $.ajax({
           type: 'GET',
