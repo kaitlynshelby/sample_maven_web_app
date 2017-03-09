@@ -269,8 +269,9 @@
       if (list)
         $.each(list, function(index, msg) { 
             $('#messageId').val(msg.messageId);
-            $('#message').val(msg.message);
             $('#userId').val(msg.userId);
+            $('#message').val(msg.message);
+            $('#dateadded').val(msg.dateadded);
         });
       else
       {
