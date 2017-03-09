@@ -63,9 +63,9 @@ public class MessageService {
     */
     
     @GET
-    @Path("{messageId}")
+    @Path("{messageid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Message> getMessagesJson(@PathParam("messageId") String id) {
+    public List<Message> getMessagesJson(@PathParam("messageid") String id) {
         LinkedList<Message> lmsgs = new LinkedList<Message>();
      
         try
