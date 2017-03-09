@@ -96,7 +96,7 @@
           var msgid = document.getElementById("messageId");
            var message = document.getElementById("message");
            var msg = { 'messageId': msgid.value };           
-           var url='tcss360/messages/';
+           var url='tcss360/messages/0';
            if (confirm('Are you sure - DELETE ' + message.value + '-(' + msgid.value + ') ?')) {
              $.ajax({
                type: 'DELETE',
@@ -132,7 +132,7 @@
                 var userid = document.getElementById("userId");
                 var msg = { 'message': message.value,
                              'userId': userid.value };           
-                var url='tcss360/messages/';
+                var url='tcss360/messages/0';
                 if (confirm('Are you sure - CREATE ' + message.value + ' ?')) {
                   $.ajax({
                     type: 'POST',
