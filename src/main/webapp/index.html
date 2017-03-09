@@ -130,7 +130,9 @@
               // Create a new record
                 var message = document.getElementById("message");
                 var userid = document.getElementById("userId");
-                var msg = { 'message': message.value,
+                var msgid = document.getElementById("messageId");
+                var msg = { 'messageId': msgid.value,
+                            'message': message.value,
                              'userId': userid.value };           
                 var url='tcss360/messages';
                 if (confirm('Are you sure - CREATE ' + message.value + ' ?')) {
