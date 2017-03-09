@@ -30,10 +30,10 @@
           background-color: yellow;
           border: 1px solid black;
         }
-        .messageid {
-            width: 60px;
+        .messageId {
+            width: 80px;
         }
-        .userid {
+        .userId {
           width: 60px;
         }
         .dateadded {
@@ -56,14 +56,14 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>    
     <script language="javascript">
     $(document).ready(function () { 
-        var old_msgid = document.getElementById("msgid").value;
+        var old_msgid = document.getElementById("messageId").value;
         
         // Get-Data Click function
         //
         // Calls the GET service to lookup a currently entered userid
         $('#get-data').click(function () 
         {
-          var msgid = document.getElementById("msgid");
+          var msgid = document.getElementById("messageId");
           var url='tcss360/messages/'+msgid.value;
 
           $.ajax({
@@ -75,14 +75,14 @@
         });
 
         $('#msgid').focusin(function () {
-            old_msgid = document.getElementById("msgid").value;    
+            old_msgid = document.getElementById("messageId").value;    
         });
 
         // If the user exits the userid textbox and places focus on another
         // GUI control on the screen, and if the user id had changed since
         // the user entered the box, then reload the user form
         $('#msgid').focusout(function () {
-            var curr_msgid = document.getElementById("msgid").value;    
+            var curr_msgid = document.getElementById("messageId").value;    
             //alert(curr_userid + '---' + old_userid)
             if (curr_msgid !== old_msgid)
                 getmessage();
@@ -93,8 +93,8 @@
         // Calls the DELETE service to delete the selected user
         $('#delete-msg').click(function ()
         {
-          var msgid = document.getElementById("msgid");
-           var message = document.getElementById("msg");
+          var msgid = document.getElementById("messageId");
+           var message = document.getElementById("message");
            var msg = { 'messageId': msgid.value };           
            var url='tcss360/messages/';
            if (confirm('Are you sure - DELETE ' + message.value + '-(' + msgid.value + ') ?')) {
@@ -114,9 +114,9 @@
         // Clears the form to allow entry of a new user record
         $('#new-msg').click(function ()
         {
-           document.getElementById("msgid").disabled = true;
-           document.getElementById("userid").value = "";
-           document.getElementById("msg").value = "";
+           document.getElementById("messageId").disabled = true;
+           document.getElementById("userId").value = "";
+           document.getElementById("message").value = "";
         });        
 
         // Save-User Click function
@@ -125,11 +125,11 @@
         // If an existing user, call the PUT to update the user
         $('#save-message').click(function ()
         {
-            if (document.getElementById("msgid").disabled)
+            if (document.getElementById("messageId").disabled)
             {
               // Create a new record
-                var message = document.getElementById("msg");
-                var userid = document.getElementById("userid");
+                var message = document.getElementById("message");
+                var userid = document.getElementById("userId");
                 var msg = { 'message': message.value,
                              'userId': userid.value };           
                 var url='tcss360/messages/';
@@ -147,9 +147,9 @@
             else
             {
                 // Update an existing record
-                var msgid = document.getElementById("msgid");
-                var msg = document.getElementById("msg");
-                var userid = document.getElementById("userid");
+                var msgid = document.getElementById("messageId");
+                var msg = document.getElementById("message");
+                var userid = document.getElementById("userId");
                 var message = { 'messageId': msgid.value,
                              'message': msg.value,
                              'userId': userid.value };           
@@ -212,7 +212,7 @@
     // gets and displays users by calling render
     function getmessage() {
         // Form load
-        var msgid = document.getElementById("msgid"); 
+        var msgid = document.getElementById("messageId"); 
         var url='tcss360/messages/' + msgid.value;
 
         $.ajax({
@@ -226,9 +226,9 @@
     // renders the user table
     function render(data)  {
       $.each(data, function(index, msg) { 
-          var newrow = "<tr><td id=\"messageid\"" + index + "\">"+ msg.messageId + "</td>";
+          var newrow = "<tr><td id=\"messageId\"" + index + "\">"+ msg.messageId + "</td>";
           newrow += "<td id=\"message\">" + msg.message + "</td>";
-          newrow += "<td id=\"userid\">" + msg.userId + "</td></tr>";
+          newrow += "<td id=\"userId\">" + msg.userId + "</td></tr>";
           $('#mybody').append(newrow);
       });
     }
@@ -245,16 +245,16 @@
     {
         $('#mybody').empty();
         getmessages();
-        document.getElementById("msgid").value = "";
+        document.getElementById("messageId").value = "";
     }
     
     // display the userid of a newly created user as supplied from the service
     function render_newmsg(data)
     {
         $.each(data, function(index, msg) { 
-          document.getElementById("msgid").value = msg.messageId;
+          document.getElementById("messageId").value = msg.messageId;
         });
-        document.getElementById("msgid").disabled = false;
+        document.getElementById("messageId").disabled = false;
         $('#mybody').empty();
         getmessages();
     }
@@ -264,14 +264,14 @@
       var list = data;
       if (list)
         $.each(list, function(index, msg) { 
-            $('#msgid').val(msg.messageId);
+            $('#messageId').val(msg.messageId);
             $('#message').val(msg.message);
-            $('#userid').val(msg.userId);
+            $('#userId').val(msg.userId);
         });
       else
       {
-        document.getElementById("msg").value = "";
-        document.getElementById("userid").value = "";
+        document.getElementById("message").value = "";
+        document.getElementById("userId").value = "";
       }
     }    
   </script>
@@ -292,23 +292,23 @@
    </tr>
    <tr>
        <td>Enter Message ID :  </td>
-       <td><input type="text" id="msgid" size="10"/>  
+       <td><input type="text" id="messageId" size="10"/>  
    </tr>
    <tr>
        <td>Enter User ID : </td>
-       <td><input type="text" id="userid" size="10"/> </td>
+       <td><input type="text" id="userId" size="10"/> </td>
    </tr>
    <tr>
        <td>Enter Message :  </td>
-       <td><input type="text" id="msg" size="100"/> </td>
+       <td><input type="text" id="message" size="100"/> </td>
    </tr>
    </table>
    <br>
    <table id="mytable" class="table">
            <thead>
              <tr class="table-header">
-                 <td class="messageid">Message ID</td>
-                 <td class="userid">User ID</td>
+                 <td class="messageId">Message ID</td>
+                 <td class="userId">User ID</td>
                  <td class="dateadded">Date Added</td>
                  <td class="message">Message</td>
              </tr>               
