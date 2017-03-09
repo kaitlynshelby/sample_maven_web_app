@@ -74,14 +74,14 @@
           });        
         });
 
-        $('#msgid').focusin(function () {
+        $('#messageId').focusin(function () {
             old_msgid = document.getElementById("messageId").value;    
         });
 
         // If the user exits the userid textbox and places focus on another
         // GUI control on the screen, and if the user id had changed since
         // the user entered the box, then reload the user form
-        $('#msgid').focusout(function () {
+        $('#messageId').focusout(function () {
             var curr_msgid = document.getElementById("messageId").value;    
             //alert(curr_userid + '---' + old_userid)
             if (curr_msgid !== old_msgid)
@@ -91,7 +91,7 @@
         // Delete-User Click function
         //
         // Calls the DELETE service to delete the selected user
-        $('#delete-msg').click(function ()
+        $('#delete-message').click(function ()
         {
           var msgid = document.getElementById("messageId");
            var message = document.getElementById("message");
@@ -112,7 +112,7 @@
         // New-User Click function
         //
         // Clears the form to allow entry of a new user record
-        $('#new-msg').click(function ()
+        $('#new-message').click(function ()
         {
            document.getElementById("messageId").disabled = true;
            document.getElementById("userId").value = "";
