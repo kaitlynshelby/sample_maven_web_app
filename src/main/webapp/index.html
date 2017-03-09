@@ -132,7 +132,7 @@
                 var userid = document.getElementById("userId");
                 var msg = { 'message': message.value,
                              'userId': userid.value };           
-                var url='tcss360/messages/0';
+                var url='tcss360/messages';
                 if (confirm('Are you sure - CREATE ' + message.value + ' ?')) {
                   $.ajax({
                     type: 'POST',
