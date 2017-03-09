@@ -40,7 +40,7 @@
           width: 200px;
         }
         .message {
-          width: 500px;
+          width: 200px;
         }
         th, td {
           border: 1px solid black;
@@ -199,7 +199,7 @@
     // gets and displays users by calling render
     function getmessages() {
         // Form load
-        var url='tcss360/messages/0';
+        var url='tcss360/messages/';
 
         $.ajax({
           type: 'GET',
@@ -300,7 +300,7 @@
    </tr>
    <tr>
        <td>Enter Message :  </td>
-       <td><input type="text" id="message" size="100"/> </td>
+       <td><input type="text" id="message" size="20"/> </td>
    </tr>
    </table>
    <br>
