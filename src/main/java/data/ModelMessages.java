@@ -143,6 +143,7 @@ public class ModelMessages {
         while (rs.next())
             msgid = rs.getInt(1);   // assuming 1st column is msgid
         logger.log(Level.INFO, "The new msg id=" + msgid);
+        msg.setMessageId(msgid);
         return msg;
     }
 }

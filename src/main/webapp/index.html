@@ -250,13 +250,16 @@
     
     // display the userid of a newly created user as supplied from the service
     function render_newmsg(data)
+    
     {
+        $('#mybody').empty();
+        getmessages();
         $.each(data, function(index, msg) { 
           document.getElementById("messageId").value = msg.messageId;
         });
         document.getElementById("messageId").disabled = false;
-        $('#mybody').empty();
-        getmessages();
+        
+        
     }
     
     // displays a selected user in the form
