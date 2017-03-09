@@ -150,7 +150,7 @@ public class MessageService {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<Message> CreateMessage(String jobj) throws IOException 
+    public List<Message> createMessage(String jobj) throws IOException 
     {
         logger.log(Level.INFO, "RECEIVED CREATE REQUEST FOR:\n");
         logger.log(Level.INFO, "OBJECT:" + jobj + "\n");
