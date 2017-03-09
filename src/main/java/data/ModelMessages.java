@@ -129,9 +129,7 @@ public class ModelMessages {
     
     public Message newMessage(Message msg) throws SQLException
     {
-        String sqlInsert = (msg.getDateadded() != null ?
-                "insert into messages (userid, message, dateadded) values (" + msg.getUserId() + ",'" + msg.getMessage()+ "','" + msg.getDateadded().toString() + "');" :
-                "insert into messages (userid, message, dateadded) values (" + msg.getUserId() + ",'" + msg.getMessage()+ "',now());");
+        String sqlInsert = ("insert into messages (userid, message, dateadded) values (" + msg.getUserId() + ",'" + msg.getMessage()+ "',now());");
                 
         Statement s = createStatement();
         logger.log(Level.INFO, "attempting statement execute");
