@@ -153,7 +153,7 @@
                 var message = { 'messageId': msgid.value,
                              'message': msg.value,
                              'userId': userid.value };           
-                var url='tcss360/messages/';
+                var url='tcss360/messages/'+msgid;
                 if (confirm('Are you sure - UPDATE ' + msgid.value + ' ?')) {
                   $.ajax({
                     type: 'PUT',
