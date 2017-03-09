@@ -254,13 +254,13 @@
     function render_newmsg(data)
     
     {
-        $('#mybody').empty();
-        getmessages();
+        
         $.each(data, function(index, msg) { 
           document.getElementById("messageId").value = msg.messageId;
         });
         document.getElementById("messageId").disabled = false;
-        
+        $('#mybody').empty();
+        getmessages();
         
     }
     
